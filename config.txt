@@ -1,0 +1,4 @@
+oauth:stringfromthewebpage
+BotUserName
+ChannelToJoin
+ModeratorNic

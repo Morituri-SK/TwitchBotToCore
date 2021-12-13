@@ -1,0 +1,21 @@
+The config.txt has to be exactly 4 lines (no foolproofing atm), which contains:
+
+oauth:stringfromthewebpage
+BotUserName
+ChannelToJoin
+ModeratorNick - that can start and stop the invites window
+
+
+Moderator opens/closes the invites window by typing the "!deathdrop" command (open/close cycles, i.e. if open then close and vice versa)
+Users in channel can spawn their avatar to the stage by typing "!play" command when the window to spawn is open
+The script is using send.keystrokes method, with first focus on the core client window - there could be issues and iterference, when the user is typing at the same time
+
+--Best practices
+Best to do is - save "!deathdrop" string to clipboard and CTRL+V that to your twitch channel to open the game window for joins,
+then quilcky grab the core client game window focus (SetForegroundWindow) not to miss any keystrokes sent. Manage your channel without keystrokes (sing, talk, gesticulate on camera)
+and when the players have spawned their avatars to stage, quickly CTRL+V the "!deathdrop" to the twitch channel to prevent any more player spawns. Now, you are free to move around the game
+and no one is able to send the keystrokes from the twitch channel until you reopen the join window.
+NOTE that only single avatar is allowed on stage with the same name (names have to be unique) - this is handled by the core game itself and will pop up a warning chat message IN THE CORE CLIENT CHAT 
+(there is no backchannel from the core client to twitch)
+
+This program is a crude one way interface (what a honest name) from the twitch to the core, until the proper twitch integration will happen in the core.
